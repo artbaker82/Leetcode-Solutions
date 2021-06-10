@@ -70,6 +70,14 @@ class LinkedList {
     this.size++;
   }
 
+  //move to index
+
+  moveTo(indexToMove, moveToIndex) {
+    let dataToMove = this.getAt(indexToMove);
+    this.removeAt(indexToMove);
+    this.insertAt(dataToMove, moveToIndex);
+  }
+
   //create list from an array
 
   //pass array as argument
@@ -84,6 +92,7 @@ class LinkedList {
       //set new node to next
       current.next = node;
       counter++;
+      //point to next node
       current = current.next;
       this.size++;
     }
@@ -95,8 +104,6 @@ class LinkedList {
   //subequent indeces become current.next
 
   ///////////////////////////
-
-  //Merge two sorted lists(leetcode challenge)
 
   //remove at index
 
@@ -134,7 +141,7 @@ class LinkedList {
       current = current.next;
     }
 
-    console.log(current.data);
+    return current.data;
   }
 
   /*Example from video
@@ -173,13 +180,31 @@ class LinkedList {
   }
 }
 
-const ll = new LinkedList();
-const ll2 = new LinkedList();
-ll.createList([1, 2, 4]);
-ll2.createList([1, 3, 4]);
-//ll.insertAt(500, 2);
-//ll.removeAt(2);
+const l1 = new LinkedList();
+const l2 = new LinkedList();
+l1.createList([1, 2, 3, 4, 5, 6]);
+l2.createList([1, 3, 4]);
 
-//ll.clearList();
-ll.printListData();
-ll2.printListData();
+//l1.moveTo(5, 0);
+//l1.printListData();
+
+//unordered
+const mergeTwoLists = (l1, l2) => {
+  if (l2.size == 0) {
+    return l1.printListData();
+  }
+
+  let mergedList = l1;
+  let l2Copy = l2;
+  let current = mergedList.head;
+
+  while (current.next) {
+    current = current.next;
+  }
+
+  mergedList.insertLast(l2Copy.head.data);
+  l2Copy.removeAt(0);
+  return mergeTwoLists(mergedList, l2Copy);
+};
+
+console.log(mergeTwoLists(l1, l2));
