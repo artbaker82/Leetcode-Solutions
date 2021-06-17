@@ -190,8 +190,9 @@ l2.createList([1, 3, 4]);
 
 //unordered
 const mergeTwoLists = (l1, l2) => {
+  //recursive, when l2 is empty, return merged list
   if (l2.size == 0) {
-    return l1.printListData();
+    return l1;
   }
 
   let mergedList = l1;
@@ -201,10 +202,40 @@ const mergeTwoLists = (l1, l2) => {
   while (current.next) {
     current = current.next;
   }
-
+  // at last node
   mergedList.insertLast(l2Copy.head.data);
   l2Copy.removeAt(0);
+  //run the function again with new mergedList, l2Copy - head
   return mergeTwoLists(mergedList, l2Copy);
 };
 
-console.log(mergeTwoLists(l1, l2));
+let mergedList = mergeTwoLists(l1, l2);
+
+//sort the list (highest to lowest)
+
+const sortList = (listToSort, compIndex, sizeCounter) => {
+  //get first value, save data value as comparison variable and index
+  //iterate through data, if data is lower value use moveTo function to sort
+  if (sizeCounter == listToSort.size) {
+    return listToSort;
+  }
+
+  let current = listToSort.getAt(compIndex);
+  
+  let currentIndex = compIndex + 1;
+  //get first data comparison
+  let comparison = current.data;
+
+  while (current.next) {
+    current = current.next;
+    
+    if (current.data < comparison) {
+      listToSort.moveToIndex(currentIndex, compIndex);
+    }
+    currentIndex++;
+  }
+
+  return sortList(listToSort, compIndex + 1, sizeCounter + 1);
+};
+
+console.log(sortList(mergedList, 0, 1));
