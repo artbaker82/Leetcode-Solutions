@@ -1,0 +1,23 @@
+{
+  "name": "Leetcode-Solutions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "indextest.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artbaker82/Leetcode-Solutions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artbaker82/Leetcode-Solutions/issues"
+  },
+  "homepage": "https://github.com/artbaker82/Leetcode-Solutions#readme",
+  "devDependencies": {
+    "jest": "^27.0.4"
+  }
+}
