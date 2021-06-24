@@ -1,10 +1,11 @@
+//created a new node
 class Node {
   constructor(data, next = null) {
     this.data = data;
     this.next = next;
   }
 }
-
+//creates a new linked list
 class LinkedList {
   constructor() {
     this.head = null;
@@ -184,7 +185,7 @@ const l1 = new LinkedList();
 const l2 = new LinkedList();
 l1.createList([1, 2, 3, 4, 5, 6]);
 l2.createList([1, 3, 4]);
-
+console.log(l1);
 //l1.moveTo(5, 0);
 //l1.printListData();
 
@@ -221,14 +222,14 @@ const sortList = (listToSort, compIndex, sizeCounter) => {
   }
 
   let current = listToSort.getAt(compIndex);
-  
+
   let currentIndex = compIndex + 1;
   //get first data comparison
   let comparison = current.data;
 
   while (current.next) {
     current = current.next;
-    
+
     if (current.data < comparison) {
       listToSort.moveToIndex(currentIndex, compIndex);
     }
@@ -237,5 +238,3 @@ const sortList = (listToSort, compIndex, sizeCounter) => {
 
   return sortList(listToSort, compIndex + 1, sizeCounter + 1);
 };
-
-console.log(sortList(mergedList, 0, 1));
