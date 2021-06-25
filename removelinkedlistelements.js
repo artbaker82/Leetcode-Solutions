@@ -76,22 +76,28 @@ console.log(removeElement(l1, 7));
 //passing solution (from youtube)
 
 const removeElements = (head, val) => {
+  //if head is empty, return null
   if (head === null) {
     return null;
   }
-
+  //establish dummy node in case head is val
   let currentNode = new ListNode(-1);
+  //attach it to list
   currentNode.next = head;
+  //move head to dummy node
   head = currentNode;
-
-  while (currentNode.next !== null) {
+  //loop through all nodes
+  while (currentNode.next) {
     if (currentNode.next.val === val) {
+      //if next node is val, skip over it
+      //on next loop, it will check new value of current.next
       currentNode.next = currentNode.next.next;
     } else {
+      //if new value of current.next isnt val, then move current to current.next
       currentNode = currentNode.next;
     }
   }
-
+  //return head.next to skip over dummy head
   return head.next;
 };
 
