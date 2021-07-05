@@ -41,4 +41,40 @@ const bubbleSort = (arr) => {
   return arr;
 };
 
-console.log(bubbleSort([78, 5, 4, 3, 2, 100, -1, -2]));
+//console.log(bubbleSort([78, 5, 4, 3, 2, 100, -1, -2]));
+
+//merge sort using recursion
+
+const mergeSort = (unsortedArray) => {
+  //base case
+  if (unsortedArray.length <= 1) {
+    return unsortedArray;
+  }
+
+  const middle = Math.floor(unsortedArray.length / 2);
+
+  const left = unsortedArray.slice(0, middle);
+  const right = unsortedArray.slice(middle);
+
+  return merge(mergeSort(left), mergeSort(right));
+};
+
+const merge = (left, right) => {
+  let resultArray = [],
+    leftIndex = 0,
+    rightIndex = 0;
+
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex]) {
+      resultArray.push(left[leftIndex]);
+      leftIndex++;
+    } else {
+      resultArray.push(right[rightIndex]);
+      rightIndex++;
+    }
+  }
+
+  return resultArray.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+};
+
+console.log(mergeSort([10, -1, 2, 5, 0, 6, 4, -5]));
