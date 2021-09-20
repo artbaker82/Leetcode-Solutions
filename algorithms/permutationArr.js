@@ -1,11 +1,8 @@
 // Given a zero-based permutation nums (0-indexed), build an array ans of the same length where ans[i] = nums[nums[i]] for each 0 <= i < nums.length and return it.
 const buildArray = (nums) => {
-  let count = 0;
   let ans = [];
   for (let i = 0; i <= nums.length - 1; i++) {
-    let val = nums[i];
-    console.log(val);
-    ans.push(nums[val]);
+    ans.push(nums[nums[i]]);
   }
   return ans;
 };
